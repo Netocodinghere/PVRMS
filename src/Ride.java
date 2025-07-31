@@ -1,5 +1,24 @@
 import java.util.ArrayList;
 
+interface RideInterface{
+    void addVisitorToQueue(Visitor visitor);
+    
+    void removeVisitorFromQueue();
+    
+    Visitor[] printQueue();
+   
+    void runOneCycle();
+   
+    void addVisitorToHistory( Visitor visitor);
+    
+    boolean checkVisitorFromHistory(Visitor visitor);
+   
+    int numberOfVisitors();
+  
+    Visitor[] printRideHistory();
+    
+}
+
 public class Ride{
     public String type;
     public int capacity;
