@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Queue;
+import java.util.LinkedList;
 
 interface RideInterface{
     void addVisitorToQueue(Visitor visitor);
@@ -20,11 +22,13 @@ interface RideInterface{
 }
 
 public class Ride{
+    
     public String type;
     public int capacity;
     public boolean isOpened;
     private Employee operator;
     private ArrayList<Visitor> riders;
+    private Queue<Visitor> waitingQueue = new LinkedList<>();
     
     Ride(){
         this.type = "";
@@ -88,7 +92,38 @@ public class Ride{
           this.riders.add(rider);
     }
 
-    
+    @Override
+public void addVisitorToQueue(Visitor visitor) {
+    if (visitor != null) {
+        waitingQueue.add(visitor);
+        System.out.println("Visitor added to the queue successfully.");
+    } else {
+        System.out.println("Failed to add visitor: Visitor is null.");
+    }
+}
+
+@Override
+public void removeVisitorFromQueue() {
+    if (!waitingQueue.isEmpty()) {
+        Visitor removed = waitingQueue.poll();
+        System.out.println("Visitor " + removed + " removed from the queue.");
+    } else {
+        System.out.println("Queue is empty. No visitor to remove.");
+    }
+}
+
+@Override
+public Visitor[] printQueue() {
+    if (waitingQueue.isEmpty()) {
+        System.out.println("The queue is empty.");
+        return new Visitor[0];
+    }
+    System.out.println("Visitors in queue:");
+    for (Visitor v : waitingQueue) {
+        System.out.println(v); // Assumes Visitor has a useful toString method
+    }
+    return waitingQueue.toArray(new Visitor[0]);
+}
 
 
 }
