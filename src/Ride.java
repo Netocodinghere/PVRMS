@@ -28,6 +28,7 @@ public class Ride implements RideInterface{
     public boolean isOpened;
     private Employee operator;
     private Queue<Visitor> waitingQueue = new LinkedList<>();
+    private ArrayList<Visitor> rideHistory = new ArrayList<>();
     
     Ride(){
         this.type = "";
@@ -92,7 +93,7 @@ public void addVisitorToQueue(Visitor visitor) {
 public void removeVisitorFromQueue() {
     if (!waitingQueue.isEmpty()) {
         Visitor removed = waitingQueue.poll();
-        System.out.println("Visitor " + removed + " removed from the queue.");
+        System.out.println("Visitor " + removed.getName() + " removed from the queue.");
     } else {
         System.out.println("Queue is empty. No visitor to remove.");
     }
@@ -105,8 +106,10 @@ public Visitor[] printQueue() {
         return new Visitor[0];
     }
     System.out.println("Visitors in queue:");
+    int i=1;
     for (Visitor v : waitingQueue) {
-        System.out.println(v); 
+        System.out.println(i + ":" +" " + v.getName());
+        i++; 
     }
     return waitingQueue.toArray(new Visitor[0]);
 }
