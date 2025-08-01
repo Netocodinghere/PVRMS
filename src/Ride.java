@@ -28,7 +28,7 @@ public class Ride implements RideInterface{
     public boolean isOpened;
     private Employee operator;
     private Queue<Visitor> waitingQueue = new LinkedList<>();
-    private ArrayList<Visitor> rideHistory = new ArrayList<>();
+    private  LinkedList<Visitor> rideHistory = new LinkedList<>();
     
     Ride(){
         this.type = "";
@@ -80,7 +80,7 @@ public class Ride implements RideInterface{
 
 
     @Override
-public void addVisitorToQueue(Visitor visitor) {
+    public void addVisitorToQueue(Visitor visitor) {
     if (visitor != null) {
         waitingQueue.add(visitor);
         System.out.println("Visitor added to the queue successfully.");
@@ -88,9 +88,8 @@ public void addVisitorToQueue(Visitor visitor) {
         System.out.println("Failed to add visitor: Visitor is null.");
     }
 }
-
-@Override
-public void removeVisitorFromQueue() {
+    @Override
+    public void removeVisitorFromQueue() {
     if (!waitingQueue.isEmpty()) {
         Visitor removed = waitingQueue.poll();
         System.out.println("Visitor " + removed.getName() + " removed from the queue.");
@@ -98,9 +97,8 @@ public void removeVisitorFromQueue() {
         System.out.println("Queue is empty. No visitor to remove.");
     }
 }
-
-@Override
-public Visitor[] printQueue() {
+    @Override
+    public Visitor[] printQueue() {
     if (waitingQueue.isEmpty()) {
         System.out.println("The queue is empty.");
         return new Visitor[0];
@@ -114,28 +112,26 @@ public Visitor[] printQueue() {
     return waitingQueue.toArray(new Visitor[0]);
 }
 
-@Override
-public void runOneCycle(){
+    @Override
+    public void runOneCycle(){
 
+    } 
+    @Override
+    public void addVisitorToHistory(Visitor visitor) {
+        rideHistory.add(visitor);
+        System.out.println("Visitor added to ride history successfully.");
+
+    }
+    @Override
+    public boolean checkVisitorFromHistory(Visitor visitor) {
+     return rideHistory.contains(visitor);
 }
-
-@Override
-public void addVisitorToHistory(Visitor visitor) {
-
-}
-
-@Override
-public boolean checkVisitorFromHistory(Visitor visitor) {
-    return false;
-}
-
-@Override
-public int numberOfVisitors() {
+    @Override
+    public int numberOfVisitors() {
     return waitingQueue.size();
 }
-
-@Override
-public Visitor[] printRideHistory() {
+    @Override
+    public Visitor[] printRideHistory() {
         return new Visitor[0];
     }
 
