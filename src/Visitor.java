@@ -1,4 +1,4 @@
-public class Visitor extends Person{
+public class Visitor extends Person {
 
     private String location;
     private float wallet;

@@ -21,13 +21,12 @@ interface RideInterface{
     
 }
 
-public class Ride{
+public class Ride implements RideInterface{
     
     public String type;
     public int capacity;
     public boolean isOpened;
     private Employee operator;
-    private ArrayList<Visitor> riders;
     private Queue<Visitor> waitingQueue = new LinkedList<>();
     
     Ride(){
@@ -35,17 +34,15 @@ public class Ride{
         this.capacity = 0;
         this.isOpened = false;
         this.operator = null;
-        this.riders = null;
     
 
     }
 
-    Ride(String type, int capacity, Employee operator, ArrayList<Visitor> riders ){
+    Ride(String type, int capacity, Employee operator){
         this.type = type;
         this.capacity = capacity;
         this.isOpened = true;
         this.operator = operator;
-        this.riders = riders;
     }
 
     public void setType(String type){
@@ -72,14 +69,6 @@ public class Ride{
         return this.operator;
     }
 
-    public void setRiders(ArrayList<Visitor> riders){
-        this.riders = riders;
-    }
-
-    public ArrayList<Visitor> getRiders(){
-        return this.riders;
-    }
-
     public void setOpened(boolean isOpened){
         this.isOpened = isOpened;
     }
@@ -88,9 +77,6 @@ public class Ride{
         return this.isOpened;
     }
 
-    public void addNewRider(Visitor rider){
-          this.riders.add(rider);
-    }
 
     @Override
 public void addVisitorToQueue(Visitor visitor) {
@@ -120,10 +106,35 @@ public Visitor[] printQueue() {
     }
     System.out.println("Visitors in queue:");
     for (Visitor v : waitingQueue) {
-        System.out.println(v); // Assumes Visitor has a useful toString method
+        System.out.println(v); 
     }
     return waitingQueue.toArray(new Visitor[0]);
 }
+
+@Override
+public void runOneCycle(){
+
+}
+
+@Override
+public void addVisitorToHistory(Visitor visitor) {
+
+}
+
+@Override
+public boolean checkVisitorFromHistory(Visitor visitor) {
+    return false;
+}
+
+@Override
+public int numberOfVisitors() {
+    return waitingQueue.size();
+}
+
+@Override
+public Visitor[] printRideHistory() {
+        return new Visitor[0];
+    }
 
 
 }
