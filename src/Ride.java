@@ -5,7 +5,7 @@ import java.util.Collections;
 interface RideInterface{
     void addVisitorToQueue(Visitor visitor);
     
-    void removeVisitorFromQueue();
+    Visitor removeVisitorFromQueue();
     
     Visitor[] printQueue();
    
@@ -24,26 +24,28 @@ interface RideInterface{
 public class Ride implements RideInterface{
     
     public String type;
-    public int maxCapacity;
+    public int maxRider;
     public boolean isOpened;
     private Employee operator;
     private Queue<Visitor> waitingQueue = new LinkedList<>();
     private  LinkedList<Visitor> rideHistory = new LinkedList<>();
-    
+    private int numOfCycles;
+
     Ride(){
         this.type = "";
-        this.maxCapacity = 0;
+        this.maxRider = 0;
         this.isOpened = false;
         this.operator = null;
     
 
     }
 
-    Ride(String type, int maxCapacity, Employee operator){
+    Ride(String type, int maxRider, Employee operator){
         this.type = type;
-        this.maxCapacity = maxCapacity;
+        this.maxRider = maxRider;
         this.isOpened = true;
         this.operator = operator;
+
     }
 
     public void setType(String type){
@@ -54,12 +56,17 @@ public class Ride implements RideInterface{
         return this.type;
     }
 
-    public void setmaxCapacity(int maxCapacity){
-        this.maxCapacity = maxCapacity;
+    public void setMaxRider(int maxRider){
+    if (maxRider < 1) {
+        System.out.println("maxRider must be at least 1. Setting to 1.");
+        this.maxRider = 1;
+    } else {
+        this.maxRider = maxRider;
     }
+}
 
-    public int getmaxCapacity(){
-        return this.maxCapacity;
+    public int getmaxRider(){
+        return this.maxRider;
     }
 
         public void setOperator(Employee operator){
@@ -72,6 +79,11 @@ public class Ride implements RideInterface{
 
     public void setOpened(boolean isOpened){
         this.isOpened = isOpened;
+    }
+
+
+    public int getNumOfCycles(){
+        return this.numOfCycles;
     }
 
     public boolean getOpened(){
@@ -88,13 +100,14 @@ public class Ride implements RideInterface{
         System.out.println("Failed to add visitor: Visitor is null.");
     }
 }
-    @Override
-    public void removeVisitorFromQueue() {
+ public Visitor removeVisitorFromQueue() {
     if (!waitingQueue.isEmpty()) {
         Visitor removed = waitingQueue.poll();
         System.out.println("Visitor " + removed.getName() + " removed from the queue.");
+        return removed;
     } else {
         System.out.println("Queue is empty. No visitor to remove.");
+        return null;
     }
 }
     @Override
@@ -114,6 +127,25 @@ public class Ride implements RideInterface{
 
     @Override
     public void runOneCycle(){
+        if (this.operator == null) {
+            System.out.println("No Operator Assigned- Cycle Terminated!");
+            return;
+        }
+        
+        if (!waitingQueue.isEmpty()){
+           int i=0;
+           while(i < this.maxRider && !waitingQueue.isEmpty()){
+             Visitor v=this.removeVisitorFromQueue();
+             this.addVisitorToHistory(v);
+             this.numOfCycles++;
+             i++;
+
+           }
+           System.out.println("Cycle Completed!");
+        }else if(waitingQueue.isEmpty()){
+            System.out.println("No Visitor In Queue");
+
+           }
 
     } 
     @Override

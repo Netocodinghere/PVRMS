@@ -15,6 +15,10 @@ public class AssignmentTwo {
       assignmentTwo.partFourB();
       System.out.println("----------------------------");
 
+     System.out.println("PART 5");
+     assignmentTwo.partFive();
+     System.out.println("----------------------------");
+
 
       
 
@@ -108,8 +112,50 @@ public class AssignmentTwo {
     }
 
     public void partFive(){ 
+    // Create Visitors
+    Visitor visitor1 = new Visitor("Andrew", 34, "male", "Brisbane", 10);
+    Visitor visitor2 = new Visitor("Alice", 25, "female", "Sydney", 15);
+    Visitor visitor3 = new Visitor("Bob", 30, "male", "Melbourne", 20);
+    Visitor visitor4 = new Visitor("Sophie", 28, "female", "Perth", 12);
+    Visitor visitor5 = new Visitor("Michael", 40, "male", "Adelaide", 18);
+    Visitor visitor6 = new Visitor("Emma", 22, "female", "Gold Coast", 8);
+    Visitor visitor7 = new Visitor("Lucas", 35, "male", "Canberra", 14);
+    Visitor visitor8 = new Visitor("Olivia", 29, "female", "Brisbane", 25);
+    Visitor visitor9 = new Visitor("Ethan", 27, "male", "Darwin", 11);
+    Visitor visitor10 = new Visitor("Grace", 31, "female", "Hobart", 17);
 
-    } 
+    // Create Ride
+    Employee employee1 = new Employee("James", 21, 300.99f, "Roller Manager", "male");
+    Ride ride = new Ride("Roller-Coaster", 5, employee1); // maxRider set to 5 for demonstration
+
+    // Add Visitors to queue
+    ride.addVisitorToQueue(visitor1);
+    ride.addVisitorToQueue(visitor2);
+    ride.addVisitorToQueue(visitor3);
+    ride.addVisitorToQueue(visitor4);
+    ride.addVisitorToQueue(visitor5);
+    ride.addVisitorToQueue(visitor6);
+    ride.addVisitorToQueue(visitor7);
+    ride.addVisitorToQueue(visitor8);
+    ride.addVisitorToQueue(visitor9);
+    ride.addVisitorToQueue(visitor10);
+
+    // Print all Visitors in the queue before running a cycle
+    System.out.println("Visitors in queue before running a cycle:");
+    ride.printQueue();
+
+    // Run one cycle
+    ride.runOneCycle();
+
+    // Print all Visitors in the queue after running a cycle
+    System.out.println("Visitors in queue after running a cycle:");
+    ride.printQueue();
+
+    // Print all Visitors in the collection (ride history)
+    System.out.println("Visitors who have taken the ride (ride history):");
+    ride.printRideHistory();
+    }
+
 
     public void partSix(){ 
 
