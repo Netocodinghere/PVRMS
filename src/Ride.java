@@ -24,7 +24,7 @@ interface RideInterface{
 public class Ride implements RideInterface{
     
     public String type;
-    public int capacity;
+    public int maxCapacity;
     public boolean isOpened;
     private Employee operator;
     private Queue<Visitor> waitingQueue = new LinkedList<>();
@@ -32,16 +32,16 @@ public class Ride implements RideInterface{
     
     Ride(){
         this.type = "";
-        this.capacity = 0;
+        this.maxCapacity = 0;
         this.isOpened = false;
         this.operator = null;
     
 
     }
 
-    Ride(String type, int capacity, Employee operator){
+    Ride(String type, int maxCapacity, Employee operator){
         this.type = type;
-        this.capacity = capacity;
+        this.maxCapacity = maxCapacity;
         this.isOpened = true;
         this.operator = operator;
     }
@@ -54,12 +54,12 @@ public class Ride implements RideInterface{
         return this.type;
     }
 
-    public void setCapacity(int capacity){
-        this.capacity = capacity;
+    public void setmaxCapacity(int maxCapacity){
+        this.maxCapacity = maxCapacity;
     }
 
-    public int getCapacity(){
-        return this.capacity;
+    public int getmaxCapacity(){
+        return this.maxCapacity;
     }
 
         public void setOperator(Employee operator){
