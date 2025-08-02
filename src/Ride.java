@@ -1,6 +1,5 @@
-import java.util.ArrayList;
-import java.util.Queue;
 import java.util.LinkedList;
+import java.util.Queue;
 
 interface RideInterface{
     void addVisitorToQueue(Visitor visitor);
@@ -122,18 +121,29 @@ public class Ride implements RideInterface{
         System.out.println("Visitor added to ride history successfully.");
 
     }
+
     @Override
     public boolean checkVisitorFromHistory(Visitor visitor) {
-     return rideHistory.contains(visitor);
+     return this.rideHistory.contains(visitor);
 }
     @Override
     public int numberOfVisitors() {
-    return waitingQueue.size();
+    return this.rideHistory.size();
 }
     @Override
     public Visitor[] printRideHistory() {
+    if (this.rideHistory.isEmpty()) {
+        System.out.println("The ride history is empty.");
         return new Visitor[0];
     }
+    System.out.println("Visitors in ride history:");
+    int i = 1;
+    for (Visitor v : rideHistory) {
+        System.out.println(i + ": " + v.getName());
+        i++;
+    }
+    return this.rideHistory.toArray(new Visitor[0]);
+}
 
 
 }
