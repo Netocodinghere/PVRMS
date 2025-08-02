@@ -2,10 +2,20 @@ public class AssignmentTwo {
 
     public static void main(String[] args) throws Exception {
       AssignmentTwo assignmentTwo=new AssignmentTwo();
-      //assignmentTwo.partThree();
+      
+      System.out.println("----------------------------");
+      System.out.println("PART 3");
+      assignmentTwo.partThree();
       System.out.println("----------------------------");
       System.out.println("PART 4A");
       assignmentTwo.partFourA();
+
+      System.out.println("----------------------------");
+      System.out.println("PART 4B");
+      assignmentTwo.partFourB();
+      System.out.println("----------------------------");
+
+
       
 
     }
@@ -71,15 +81,40 @@ public class AssignmentTwo {
   
 
     } 
+    
     public void partFourB(){ 
+    Visitor visitor1 = new Visitor("Andrew", 34, "male", "Brisbane", 10);
+    Visitor visitor2 = new Visitor("Alice", 25, "female", "Sydney", 15);
+    Visitor visitor3 = new Visitor("Bob", 30, "male", "Melbourne", 20);
+    Visitor visitor4 = new Visitor("Sophie", 28, "female", "Perth", 12);
+    Visitor visitor5 = new Visitor("Michael", 40, "male", "Adelaide", 18);
 
-    } 
+    Employee employee1 = new Employee("James", 21, 300.99f, "Roller Manager", "male");
+    Ride ride = new Ride("Roller-Coaster", 20, employee1);
+
+    ride.addVisitorToHistory(visitor1);
+    ride.addVisitorToHistory(visitor2);
+    ride.addVisitorToHistory(visitor3);
+    ride.addVisitorToHistory(visitor4);
+    ride.addVisitorToHistory(visitor5);
+
+    System.out.println("Visitors before sorting:");
+    ride.printRideHistory();
+
+    ride.sortRideHistory();
+
+    System.out.println("Visitors after sorting:"); 
+    ride.printRideHistory();
+    }
+
     public void partFive(){ 
 
     } 
+
     public void partSix(){ 
 
-    } 
+    }
+
     public void partSeven(){ 
 
     }
