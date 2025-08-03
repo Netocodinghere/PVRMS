@@ -37,7 +37,7 @@ public class Visitor extends Person {
     
     @Override
     public String toString() {
-        return super.getName() + "," + super.getAge() + "," + super.getGender() + "," + this.location;
+        return super.getName() + "," + super.getAge() + "," + super.getGender() + "," + this.location + "," + this.wallet;
     
     }
 

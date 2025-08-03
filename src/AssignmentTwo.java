@@ -5,23 +5,52 @@ public class AssignmentTwo {
       
       System.out.println("----------------------------");
       System.out.println("PART 3");
+      
+     System.out.println("----------------------------");
       assignmentTwo.partThree();
+       System.out.println("               ");
+   
+   
       System.out.println("----------------------------");
       System.out.println("PART 4A");
+      
+     System.out.println("----------------------------");
       assignmentTwo.partFourA();
+       System.out.println("               ");
+   
 
       System.out.println("----------------------------");
       System.out.println("PART 4B");
+      
+     System.out.println("----------------------------");
       assignmentTwo.partFourB();
+       System.out.println("               ");
+   
+   
+   
       System.out.println("----------------------------");
 
      System.out.println("PART 5");
+     
+     System.out.println("----------------------------");
      assignmentTwo.partFive();
+      System.out.println("               ");
+   
      System.out.println("----------------------------");
 
-     System.out.println("PART 5");
-     assignmentTwo.partSix();
+     System.out.println("PART 6");
+     
      System.out.println("----------------------------");
+     assignmentTwo.partSix();
+      System.out.println("               ");
+   
+     System.out.println("----------------------------");
+     System.out.println("PART 7");
+     System.out.println("----------------------------");
+     assignmentTwo.partSeven();
+   
+
+
 
 
 
@@ -50,9 +79,15 @@ public class AssignmentTwo {
     ride1.addVisitorToQueue(visitor5);
     ride1.addVisitorToQueue(visitor6);
     ride1.addVisitorToQueue(visitor7);
+    
+    System.out.println("               ");
 
     ride1.printQueue();
+    
+    System.out.println("               ");
     ride1.removeVisitorFromQueue();
+    
+    System.out.println("               ");
     ride1.printQueue();
 }
     public void partFourA(){ 
@@ -76,11 +111,13 @@ public class AssignmentTwo {
     ride.addVisitorToHistory(visitor3);
     ride.addVisitorToHistory(visitor2);
     ride.addVisitorToHistory(visitor1);
+    
+    System.out.println("               ");
 
     ride.printRideHistory();
-    System.out.println("**********************");
+    System.out.println("               ");
     System.out.println(ride.checkVisitorFromHistory(visitor8) ? "Visitor Found" : "Visitor Not Found");
-        System.out.println(ride.checkVisitorFromHistory(visitor7) ? "Visitor Found" : "Visitor Not Found");
+    System.out.println(ride.checkVisitorFromHistory(visitor7) ? "Visitor Found" : "Visitor Not Found");
 
     System.out.println("               ");
     System.out.println("Number Of Visitors:" + ride.numberOfVisitors());
@@ -107,11 +144,17 @@ public class AssignmentTwo {
     ride.addVisitorToHistory(visitor3);
     ride.addVisitorToHistory(visitor4);
     ride.addVisitorToHistory(visitor5);
+    
+    System.out.println("               ");
 
     System.out.println("Visitors before sorting:");
     ride.printRideHistory();
+    
+    System.out.println("               ");
 
     ride.sortRideHistory();
+    
+    System.out.println("               ");
 
     System.out.println("Visitors after sorting:"); 
     ride.printRideHistory();
@@ -145,20 +188,24 @@ public class AssignmentTwo {
     ride.addVisitorToQueue(visitor8);
     ride.addVisitorToQueue(visitor9);
     ride.addVisitorToQueue(visitor10);
-
+    System.out.println("                      ");
     // Print all Visitors in the queue before running a cycle
-    System.out.println("Visitors in queue before running a cycle:");
+    System.out.println("----------Visitors in queue before running a cycle----------");
     ride.printQueue();
+    
+    System.out.println("               ");
 
     // Run one cycle
     ride.runOneCycle();
+    
+    System.out.println("               ");
 
     // Print all Visitors in the queue after running a cycle
-    System.out.println("Visitors in queue after running a cycle:");
+    System.out.println("-------Visitors in queue after running a cycle------------");
     ride.printQueue();
-
+    System.out.println("                      ");
     // Print all Visitors in the collection (ride history)
-    System.out.println("Visitors who have taken the ride (ride history):");
+    System.out.println("-------Visitors who have taken the ride (ride history)-------");
     ride.printRideHistory();
     }
 
@@ -181,6 +228,7 @@ public class AssignmentTwo {
 
             ride.runOneCycle();
             ride.exportRideHistoryToFile("ride_history");
+            System.out.println("               ");
 
      
             
@@ -192,6 +240,13 @@ public class AssignmentTwo {
     }
 
     public void partSeven(){ 
+        Employee employee1 = new Employee("James", 21, 300.99f, "Roller Manager", "male");
+        Ride ride = new Ride("Roller-Coaster", 5, employee1);
+        
+        ride.importRideHistoryFromFile("ride_history");
+        System.out.println("               ");
+        ride.printRideHistory();
+        
 
     }
 }

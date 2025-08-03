@@ -3,6 +3,8 @@ import java.util.Queue;
 import java.util.Collections;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.FileReader;
+import java.io.BufferedReader;
 
 interface RideInterface{
     void addVisitorToQueue(Visitor visitor);
@@ -174,7 +176,7 @@ public class Ride implements RideInterface{
     System.out.println("Visitors in ride history:");
     int i = 1;
     for (Visitor v : rideHistory) {
-        System.out.println(i + ": " + v.getName());
+        System.out.println(i + ": " + v.toString());
         i++;
     }
     return this.rideHistory.toArray(new Visitor[0]);
@@ -197,6 +199,21 @@ public class Ride implements RideInterface{
     
     }
 
+    public void importRideHistoryFromFile(String filename) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename + ".csv"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                Visitor visitor = new Visitor(parts[0], Integer.parseInt(parts[1]), parts[2], parts[3], Float.parseFloat(parts[4]));
+                this.addVisitorToHistory(visitor);
+            
 
 
+    }
+   } catch (IOException e) {
+        System.out.println("Error reading from file: " + e.getMessage());
+
+        }
+
+}
 }
