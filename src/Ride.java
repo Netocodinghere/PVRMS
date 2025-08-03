@@ -1,10 +1,10 @@
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Collections;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.FileReader;
-import java.io.BufferedReader;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.Queue;
 
 interface RideInterface{
     void addVisitorToQueue(Visitor visitor);
@@ -141,10 +141,11 @@ public class Ride implements RideInterface{
            while(i < this.maxRider && !waitingQueue.isEmpty()){
              Visitor v=this.removeVisitorFromQueue();
              this.addVisitorToHistory(v);
-             this.numOfCycles++;
              i++;
 
            }
+           this.numOfCycles++;
+             
            System.out.println("Cycle Completed!");
         }else if(waitingQueue.isEmpty()){
             System.out.println("No Visitor In Queue");
@@ -152,6 +153,7 @@ public class Ride implements RideInterface{
            }
 
     } 
+    
     @Override
     public void addVisitorToHistory(Visitor visitor) {
         rideHistory.add(visitor);
@@ -183,7 +185,6 @@ public class Ride implements RideInterface{
 }
     public void sortRideHistory(){
         Collections.sort(this.rideHistory, new VisitorComparator());
-        System.out.println("Ride history sorted successfully.");
         System.out.println("Ride history sorted successfully.");
     }
 
