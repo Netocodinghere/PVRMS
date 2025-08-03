@@ -48,13 +48,6 @@ public class AssignmentTwo {
      System.out.println("PART 7");
      System.out.println("----------------------------");
      assignmentTwo.partSeven();
-   
-
-
-
-
-
-
       
 
     }
