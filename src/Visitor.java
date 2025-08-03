@@ -34,6 +34,13 @@ public class Visitor extends Person {
         this.location=loc;
     }
 
+    
+    @Override
+    public String toString() {
+        return super.getName() + "," + super.getAge() + "," + super.getGender() + "," + this.location;
+    
+    }
+
 
 
 

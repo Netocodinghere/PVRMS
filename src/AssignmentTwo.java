@@ -19,6 +19,12 @@ public class AssignmentTwo {
      assignmentTwo.partFive();
      System.out.println("----------------------------");
 
+     System.out.println("PART 5");
+     assignmentTwo.partSix();
+     System.out.println("----------------------------");
+
+
+
 
       
 
@@ -158,6 +164,30 @@ public class AssignmentTwo {
 
 
     public void partSix(){ 
+            Visitor visitor3 = new Visitor("Bob", 30, "male", "Melbourne", 20);
+            Visitor visitor4 = new Visitor("Sophie", 28, "female", "Perth", 12);
+            Visitor visitor5 = new Visitor("Michael", 40, "male", "Adelaide", 18);
+            Visitor visitor6 = new Visitor("Emma", 22, "female", "Gold Coast", 8);
+            Visitor visitor7 = new Visitor("Lucas", 35, "male", "Canberra", 14);
+            Visitor visitor8 = new Visitor("Olivia", 29, "female", "Brisbane", 25);
+            Employee employee1 = new Employee("James", 21, 300.99f, "Roller Manager", "male");
+            Ride ride = new Ride("Roller-Coaster", 5, employee1);
+            ride.addVisitorToQueue(visitor3);
+            ride.addVisitorToQueue(visitor4);
+            ride.addVisitorToQueue(visitor5);
+            ride.addVisitorToQueue(visitor6);
+            ride.addVisitorToQueue(visitor7);
+            ride.addVisitorToQueue(visitor8);
+
+            ride.runOneCycle();
+            ride.exportRideHistoryToFile("ride_history");
+
+     
+            
+
+
+
+
 
     }
 

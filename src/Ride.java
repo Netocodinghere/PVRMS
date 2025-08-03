@@ -1,6 +1,8 @@
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Collections;
+import java.io.FileWriter;
+import java.io.IOException;
 
 interface RideInterface{
     void addVisitorToQueue(Visitor visitor);
@@ -182,6 +184,19 @@ public class Ride implements RideInterface{
         System.out.println("Ride history sorted successfully.");
         System.out.println("Ride history sorted successfully.");
     }
+
+    public void exportRideHistoryToFile(String filename) {
+     try(FileWriter writer=new FileWriter(filename + ".csv")) {
+         for (Visitor v: this.rideHistory){
+             writer.write(v.toString() + "\n");
+         }
+         System.out.println("Ride history exported to " + filename + ".csv");
+     } catch (IOException e) {
+        System.out.println("Error writing to file: " + e.getMessage());
+     }
+    
+    }
+
 
 
 }
